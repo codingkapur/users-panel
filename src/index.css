@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.645);
+}
+.loading__container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin: 2rem;
+  color: rgb(56, 139, 223);
+}
+/* TABLE */
+.table__container {
+  
+  height: 100vh;
+}
+.table__top-row {
+  border: 1px solid rgba(17, 34, 51, 0.7);
+  display: grid;
+  grid-template-columns: 2fr 3fr 3fr;
+  align-items: center;
+  padding: 0.5rem;
+}
+@media screen and (max-width: 700px) {
+  .table__top-row {
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 0.5rem;
+  }
+}
+.table__top-row--search-bar {
+  padding: 0.5rem;
+  width: 100%;
+  /* border: 1px solid #123; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table__search-bar--input {
+  padding: 0.5rem;
+  border: none;
+  width: 90%;
+}
+.table__top-row--operations {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(8,1fr);
+  place-items: center;
+}
+.btn {
+  height: 2rem;
+  background-color: #fff;
+  border: 1px solid rgba(1, 36, 72, 0.104);
+  border-radius: 5px;
+  padding: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: rgba(1, 36, 72, 0.624);
+  font-weight: 400;
+  font-size: 1rem;
+}
+.status-btn {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.input__checkbox {
+  outline: none;
+}
+.btn:hover {
+  box-shadow: 0 3px 5px rgba(0,0,0,0.4);
+}
+
+
+.rows__container {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
+
+.rows__container--left {
+  border: 1px solid #123;
+  display: grid; 
+  /* grid-column: 1 ;
+  grid-row: 2; */
+}
+.rows__container--right {
+  border: 1px solid #123;
+  display: grid; 
+  grid-template-columns: 1fr;
+  overflow-x: scroll;
+}
+.user__row--left, .user__row--right {
+  border-bottom: 1px solid #123;
+  padding: 1rem 0;
+
+}
+
+.user__row--left {
+  display: grid; 
+  grid-template-columns: 1fr 3fr 1fr;
+  padding: 1rem;
+  align-self: center;
+  align-items: center;
+  
+}
+.user__row--right {
+  display: grid; 
+  grid-template-columns: repeat(5, 200px);
+  align-self: center;
+  align-items: center;
+  padding: 1rem;
+
+}
+
+.rows__container--right p {
+
+  margin-left: 1rem;
+}
+
+.row__user--status.Open {
+  color: rgb(1, 143, 1);
+}
+.row__user--status.Progress {
+  color: rgb(2, 31, 196);
+}.row__user--status.Hold {
+  color: rgb(191, 178, 6);
+}.row__user--status.Open {
+  color: rgb(1, 143, 1);
+}
+.pagination__container {
+  margin: 1rem auto;
+  grid-column-start:1;
+  grid-column-end: -1;
+  grid-row: auto;
+
+}
+.pagination__btn {
+  background-color: rgb(113, 178, 242);
+  border: none;
+  margin: 0 0.2rem;
+  width: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.241);
+  border-radius: 5px;
+  padding: 0.5rem;
+  transition: 0.2s ease;
+}
+
+.pagination__btn:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.241);
+  transform: scale(0.95);
+}
