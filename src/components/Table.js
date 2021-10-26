@@ -1,22 +1,30 @@
+import { useState } from "react";
 import { BsSearch, BsThreeDots } from "react-icons/bs";
-import {
-  FiChevronRight,
-  FiChevronLeft,
-  FiChevronDown,
-} from "react-icons/fi";
+import { FiChevronRight, FiChevronLeft, FiChevronDown } from "react-icons/fi";
 import RowsContainer from "./RowsContainer";
 
-const Table = ({ userList, totalPages, handleClick, page}) => {
+const Table = ({ userList, totalPages, handleClick, page }) => {
+  const [searchState, setSearchState] = useState(false);
 
+  const handleSearchIconClick = () => {
+      setSearchState(!searchState);
+  }
   return (
     <div className="table__container">
       <div className="table__top-row">
         <div className="table__top-row--search-bar">
-          <BsSearch />
+          <BsSearch
+            className="search__icon"
+            onClick={() => handleSearchIconClick()}
+          />
           <input
             type="text"
-            className="table__search-bar--input"
-            placeholder="1 of 276 contacts"
+            className={
+              searchState
+                ? "table__search-bar--input active"
+                : "table__search-bar--input"
+            }
+            placeholder="Search for a user"
           />
         </div>
         <div className="table__toprow--empty-space"></div>
@@ -40,7 +48,12 @@ const Table = ({ userList, totalPages, handleClick, page}) => {
           </button>
         </div>
       </div>
-      <RowsContainer userList={userList} page={page} totalPages ={totalPages} handleClick={handleClick}/>
+      <RowsContainer
+        userList={userList}
+        page={page}
+        totalPages={totalPages}
+        handleClick={handleClick}
+      />
     </div>
   );
 };

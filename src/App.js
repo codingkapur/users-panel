@@ -37,9 +37,10 @@ function App() {
   }, []);
   //Change page function
   const handleClick = (num) => {
-    console.log("click");
     setPage(num);
   };
+
+ 
 
   return (
     <div className="App">

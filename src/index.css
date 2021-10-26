@@ -39,6 +39,8 @@ body {
     padding: 0.5rem;
   }
 }
+
+/* Search bar */
 .table__top-row--search-bar {
   padding: 0.5rem;
   width: 100%;
@@ -48,10 +50,29 @@ body {
   justify-content: space-between;
 }
 .table__search-bar--input {
+  /* border: 1px solid #123; */
+  padding: 0.5rem;
+  border: none;
+  width: 0%;
+  transition: 0.4s ease;
+  border-bottom: 1px solid rgba(0, 145, 255, 0.145);
+  opacity: 0;
+}
+.table__search-bar--input.active {
   padding: 0.5rem;
   border: none;
   width: 90%;
+  border-bottom: 1px solid rgba(0, 145, 255, 0.597);
+  opacity: 1;
 }
+.search__icon {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.search__icon:hover {
+  transform: scale(1.1);
+}
+
 .table__top-row--operations {
   display: grid;
   gap: 0.5rem;
@@ -163,3 +184,4 @@ body {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.241);
   transform: scale(0.95);
 }
+
