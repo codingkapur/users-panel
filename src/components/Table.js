@@ -5,6 +5,7 @@ import RowsContainer from "./RowsContainer";
 
 const Table = ({ userList, totalPages, handleClick, page }) => {
   const [searchState, setSearchState] = useState(false);
+  
 
   const handleSearchIconClick = () => {
       setSearchState(!searchState);

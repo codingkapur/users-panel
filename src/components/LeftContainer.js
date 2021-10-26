@@ -5,7 +5,7 @@ const LeftContainer = ({user}) => {
         <div className="user__row--left">
               <input type="checkbox" className="input__checkbox" />
               <p className="row__user--name">{user.name}</p>
-              <BsThreeDots />
+              <BsThreeDots className="more__icon"/>
             </div>
     )
 }
