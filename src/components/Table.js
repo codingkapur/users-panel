@@ -25,6 +25,7 @@ const Table = ({ userList, totalPages, handleClick, page }) => {
       searchInput.current.blur();
     }
   };
+
   //On submit of search form input, what happens?
   const handleSearchSubmit = (e) => {
     //prevent default behavior
@@ -34,11 +35,17 @@ const Table = ({ userList, totalPages, handleClick, page }) => {
     //Reset the text input area
     setSearchInputText("");
     //Search for input in userList
+    const searchResult = userList.filter((x) =>
+      x.name.includes(searchVariable)
+    );
+    console.log(searchResult);
+    //Search for users in database
 
     //Display results in the Panel.
 
     //Set Search bar off
     setSearchState(!searchState);
+
     console.log(searchVariable);
   };
   return (
