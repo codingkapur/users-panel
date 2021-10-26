@@ -8,19 +8,12 @@ const Table = ({ userList, totalPages, handleClick, page }) => {
   const [searchInputText, setSearchInputText] = useState("");
   const searchInput = useRef(null);
 
-  //   const focusOnClick = (searchState) => {
-  //     if (searchState) {
-  //       return
-  //     } else {
-  //       return searchInput.current.blur();
-  //     }
-  //   };
-
+  //Function handles click on search icon.
   const handleSearchIconClick = () => {
     setSearchState(!searchState);
     setSearchInputText("");
   };
-
+  //Every time the value of variable changes, run this function.
   useEffect(() => {
     focusOnClick();
   }, [searchState]);
@@ -32,15 +25,29 @@ const Table = ({ userList, totalPages, handleClick, page }) => {
       searchInput.current.blur();
     }
   };
-
+  //On submit of search form input, what happens?
   const handleSearchSubmit = (e) => {
-      e.preventDefault();
-      console.log(searchInputText);
-  }
+    //prevent default behavior
+    e.preventDefault();
+    //Store value of input in a variable
+    const searchVariable = searchInputText;
+    //Reset the text input area
+    setSearchInputText("");
+    //Search for input in userList
+
+    //Display results in the Panel.
+
+    //Set Search bar off
+    setSearchState(!searchState);
+    console.log(searchVariable);
+  };
   return (
     <div className="table__container">
       <div className="table__top-row">
-        <form className="table__top-row--search-bar" onSubmit={(e)=> handleSearchSubmit(e)}>
+        <form
+          className="table__top-row--search-bar"
+          onSubmit={(e) => handleSearchSubmit(e)}
+        >
           <BsSearch
             className="search__icon"
             onClick={() => handleSearchIconClick()}
