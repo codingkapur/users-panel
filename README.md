@@ -11,7 +11,6 @@ Link to project: https://github.com/codingkapur/visualize-my-orders.git
 2. Perform persisting CRUD operations.
 3. Search by Name.
 4. Sort the users by Name, Status, Source and Date.
-5. 
 
 ## How to install
 ### Prequisite: Node 14
