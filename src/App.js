@@ -8,7 +8,6 @@ function App() {
   const [userList, setUserList] = useState([]);
   const [loading, setLoading] = useState([false]);
   const [totalPages, setTotalPages] = useState(0);
-  const [page, setPage] = useState(1);
 
   //Fetch Data from Database
   const fetchData = async () => {
@@ -35,22 +34,11 @@ function App() {
     };
     getData();
   }, []);
-  //Change page function
-  const handleClick = (num) => {
-    setPage(num);
-  };
-
- 
 
   return (
     <div className="App">
       {loading && <Loading />}
-      <Table
-        userList={userList}
-        totalPages={totalPages}
-        handleClick={handleClick}
-        page={page}
-      />
+      <Table userList={userList} totalPages={totalPages} />
     </div>
   );
 }

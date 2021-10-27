@@ -3,12 +3,25 @@ import RightContainer from "./RightContainer";
 import { USER_PER_PAGE } from "../utils/constants";
 import Pagination from "./Pagination";
 import React from "react";
+import { useState} from "react";
 import { BsThreeDots } from "react-icons/bs";
 
-const RowsContainer = ({ userList, page, totalPages, handleClick }) => {
+const RowsContainer = ({ userList, totalPages }) => {
+  const [page, setPage] = useState(1);
+
   const startIndex = (page - 1) * USER_PER_PAGE;
   const selectedUsers = userList.slice(startIndex, startIndex + USER_PER_PAGE);
 
+  const handleRightClick = () => {
+    if(page<totalPages){
+      setPage(page + 1);
+    }
+  };
+  const handleLeftClick = () => {
+    if(page>1){
+      setPage(page - 1);
+    }
+  };
   return (
     <div className="rows__container">
       <div className="rows__container--left">
@@ -33,7 +46,7 @@ const RowsContainer = ({ userList, page, totalPages, handleClick }) => {
           return <RightContainer user={x} key={x.id} />;
         })}
       </div>
-      <Pagination totalPages={totalPages} handleClick={handleClick} />
+      <Pagination totalPages={totalPages} page={page} handleLeftClick = {handleLeftClick} handleRightClick={handleRightClick}/>
     </div>
   );
 };

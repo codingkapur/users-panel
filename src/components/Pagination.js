@@ -1,12 +1,26 @@
-const Pagination = ({ totalPages, handleClick}) => {
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
-  const pages = [...Array(totalPages).keys()].map((num) => num + 1);
+const Pagination = ({
+  totalPages,
+  handleRightClick,
+  handleLeftClick,
+  page,
+}) => {
+  //returns an array of numbers uptill the value of the variable
+  // const pages = [...Array(totalPages).keys()].map((num) => num + 1);
 
   return (
     <div className="pagination__container">
-      {pages.map((page) => {
-        return <button className="pagination__btn" key={page} onClick={()=>handleClick(page)}>{page}</button>;
-      })}
+      <FiChevronLeft
+        className="arrow__icon"
+        onClick={() => handleLeftClick()}
+      />
+      <p className="pagination__btn">{page}</p>
+      <p>of {totalPages}</p>
+      <FiChevronRight
+        className="arrow__icon"
+        onClick={() => handleRightClick()}
+      />
     </div>
   );
 };

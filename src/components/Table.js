@@ -3,7 +3,7 @@ import { BsSearch, BsThreeDots } from "react-icons/bs";
 import { FiChevronRight, FiChevronLeft, FiChevronDown } from "react-icons/fi";
 import RowsContainer from "./RowsContainer";
 
-const Table = ({ userList, totalPages, handleClick, page }) => {
+const Table = ({ userList, totalPages, page }) => {
   const [searchState, setSearchState] = useState(false);
   const [searchInputText, setSearchInputText] = useState("");
   const searchInput = useRef(null);
@@ -95,9 +95,7 @@ const Table = ({ userList, totalPages, handleClick, page }) => {
       </div>
       <RowsContainer
         userList={userList}
-        page={page}
         totalPages={totalPages}
-        handleClick={handleClick}
       />
     </div>
   );
