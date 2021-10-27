@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { BsSearch, BsThreeDots } from "react-icons/bs";
-import { FiChevronRight, FiChevronLeft, FiChevronDown } from "react-icons/fi";
+import {
+  FiChevronRight,
+  FiChevronLeft,
+  FiChevronDown,
+  FiX,
+} from "react-icons/fi";
 import RowsContainer from "./RowsContainer";
 import { USER_PER_PAGE } from "../utils/constants";
 
@@ -70,10 +75,17 @@ const Table = ({ userList, totalPages }) => {
           className="table__top-row--search-bar"
           onSubmit={(e) => handleSearchSubmit(e)}
         >
-          <BsSearch
-            className="search__icon"
-            onClick={() => handleSearchIconClick()}
-          />
+          {searchState ? (
+            <FiX
+              className="search__icon"
+              onClick={() => handleSearchIconClick()}
+            />
+          ) : (
+            <BsSearch
+              className="search__icon"
+              onClick={() => handleSearchIconClick()}
+            />
+          )}
           <input
             value={searchInputText}
             onChange={(e) => setSearchInputText(e.target.value)}
