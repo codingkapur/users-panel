@@ -3,7 +3,7 @@ import RightContainer from "./RightContainer";
 import { USER_PER_PAGE } from "../utils/constants";
 import Pagination from "./Pagination";
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 
 const RowsContainer = ({ userList, totalPages }) => {
@@ -13,12 +13,12 @@ const RowsContainer = ({ userList, totalPages }) => {
   const selectedUsers = userList.slice(startIndex, startIndex + USER_PER_PAGE);
 
   const handleRightClick = () => {
-    if(page<totalPages){
+    if (page < totalPages) {
       setPage(page + 1);
     }
   };
   const handleLeftClick = () => {
-    if(page>1){
+    if (page > 1) {
       setPage(page - 1);
     }
   };
@@ -28,7 +28,7 @@ const RowsContainer = ({ userList, totalPages }) => {
         <div className="heading__row--left">
           <input type="checkbox" className="input__checkbox" />
           <p className="row__user--name">Name</p>
-          <BsThreeDots className="more__icon"/>
+          <BsThreeDots className="more__icon" />
         </div>
         {selectedUsers.map((x) => {
           return <LeftContainer user={x} key={x.id} />;
@@ -46,7 +46,12 @@ const RowsContainer = ({ userList, totalPages }) => {
           return <RightContainer user={x} key={x.id} />;
         })}
       </div>
-      <Pagination totalPages={totalPages} page={page} handleLeftClick = {handleLeftClick} handleRightClick={handleRightClick}/>
+      <Pagination
+        totalPages={totalPages}
+        page={page}
+        handleLeftClick={handleLeftClick}
+        handleRightClick={handleRightClick}
+      />
     </div>
   );
 };

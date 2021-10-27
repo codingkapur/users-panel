@@ -2,10 +2,13 @@ import { useState, useRef, useEffect } from "react";
 import { BsSearch, BsThreeDots } from "react-icons/bs";
 import { FiChevronRight, FiChevronLeft, FiChevronDown } from "react-icons/fi";
 import RowsContainer from "./RowsContainer";
+import { USER_PER_PAGE } from "../utils/constants";
 
-const Table = ({ userList, totalPages, page }) => {
+const Table = ({ userList, totalPages }) => {
   const [searchState, setSearchState] = useState(false);
   const [searchInputText, setSearchInputText] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+  const [searchResultsPages, setSearchResultsPages] = useState(null);
   const searchInput = useRef(null);
 
   //Function handles click on search icon.
@@ -16,7 +19,15 @@ const Table = ({ userList, totalPages, page }) => {
   //Every time the value of variable changes, run this function.
   useEffect(() => {
     focusOnClick();
+    returnUserList();
   }, [searchState]);
+
+  const returnUserList = () => {
+    if (!searchState) {
+      setSearchResults(null);
+      setSearchResultsPages(null);
+    }
+  };
 
   const focusOnClick = () => {
     if (searchState) {
@@ -25,29 +36,33 @@ const Table = ({ userList, totalPages, page }) => {
       searchInput.current.blur();
     }
   };
-
   //On submit of search form input, what happens?
   const handleSearchSubmit = (e) => {
     //prevent default behavior
     e.preventDefault();
     //Store value of input in a variable
     const searchVariable = searchInputText;
-    //Reset the text input area
-    setSearchInputText("");
     //Search for input in userList
-    const searchResult = userList.filter((x) =>
-      x.name.includes(searchVariable)
-    );
-    console.log(searchResult);
+    setSearchResults(userList.filter((x) => x.name.includes(searchVariable)));
+    //Pagination for search results
+
     //Search for users in database
 
-    //Display results in the Panel.
+    //If no results found
 
-    //Set Search bar off
-    setSearchState(!searchState);
-
-    console.log(searchVariable);
+    //Go to page nnumber 1.
   };
+
+  const updatePageCount = () => {
+    if (searchResults) {
+      setSearchResultsPages(Math.ceil(searchResults.length / USER_PER_PAGE));
+    }
+  };
+
+  useEffect(() => {
+    updatePageCount();
+  }, [searchResults]);
+
   return (
     <div className="table__container">
       <div className="table__top-row">
@@ -94,8 +109,8 @@ const Table = ({ userList, totalPages, page }) => {
         </div>
       </div>
       <RowsContainer
-        userList={userList}
-        totalPages={totalPages}
+        userList={searchResults ? searchResults : userList}
+        totalPages={searchResultsPages ? searchResultsPages : totalPages}
       />
     </div>
   );
